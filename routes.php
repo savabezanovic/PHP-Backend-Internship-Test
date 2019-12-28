@@ -10,6 +10,8 @@
 
 	$router->get("dashboard", "controllers/dashboard.php");
 
+	$router->get("logout", "controllers/logout.php");
+
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 26, 2019 at 08:48 AM
+-- Generation Time: Dec 28, 2019 at 03:16 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -25,19 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `field`
+-- Table structure for table `fields`
 --
 
-CREATE TABLE `field` (
+CREATE TABLE `fields` (
   `id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `field`
+-- Dumping data for table `fields`
 --
 
-INSERT INTO `field` (`id`, `name`) VALUES
+INSERT INTO `fields` (`id`, `name`) VALUES
 (2, 'Back End'),
 (1, 'Front End');
 
@@ -65,20 +65,20 @@ INSERT INTO `frameworks` (`id`, `name`, `language_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `framework_version`
+-- Table structure for table `framework_versions`
 --
 
-CREATE TABLE `framework_version` (
+CREATE TABLE `framework_versions` (
   `id` int(11) NOT NULL,
   `version_name` varchar(40) NOT NULL,
   `framework_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `framework_version`
+-- Dumping data for table `framework_versions`
 --
 
-INSERT INTO `framework_version` (`id`, `version_name`, `framework_id`) VALUES
+INSERT INTO `framework_versions` (`id`, `version_name`, `framework_id`) VALUES
 (1, 'AngularJs', 3);
 
 -- --------------------------------------------------------
@@ -132,9 +132,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_field_id`, `user_l
 --
 
 --
--- Indexes for table `field`
+-- Indexes for table `fields`
 --
-ALTER TABLE `field`
+ALTER TABLE `fields`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
@@ -147,9 +147,9 @@ ALTER TABLE `frameworks`
   ADD KEY `language_id` (`language_id`);
 
 --
--- Indexes for table `framework_version`
+-- Indexes for table `framework_versions`
 --
-ALTER TABLE `framework_version`
+ALTER TABLE `framework_versions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `version_name` (`version_name`),
   ADD KEY `framework_name` (`framework_id`);
@@ -180,9 +180,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `field`
+-- AUTO_INCREMENT for table `fields`
 --
-ALTER TABLE `field`
+ALTER TABLE `fields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -192,9 +192,9 @@ ALTER TABLE `frameworks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `framework_version`
+-- AUTO_INCREMENT for table `framework_versions`
 --
-ALTER TABLE `framework_version`
+ALTER TABLE `framework_versions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -220,25 +220,25 @@ ALTER TABLE `frameworks`
   ADD CONSTRAINT `frameworks_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`);
 
 --
--- Constraints for table `framework_version`
+-- Constraints for table `framework_versions`
 --
-ALTER TABLE `framework_version`
-  ADD CONSTRAINT `framework_version_ibfk_1` FOREIGN KEY (`framework_id`) REFERENCES `frameworks` (`id`);
+ALTER TABLE `framework_versions`
+  ADD CONSTRAINT `framework_versions_ibfk_1` FOREIGN KEY (`framework_id`) REFERENCES `frameworks` (`id`);
 
 --
 -- Constraints for table `languages`
 --
 ALTER TABLE `languages`
-  ADD CONSTRAINT `languages_ibfk_1` FOREIGN KEY (`field_id`) REFERENCES `field` (`id`);
+  ADD CONSTRAINT `languages_ibfk_1` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`);
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_field_id`) REFERENCES `field` (`id`),
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_field_id`) REFERENCES `fields` (`id`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`user_language_id`) REFERENCES `languages` (`id`),
   ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`user_framework_id`) REFERENCES `frameworks` (`id`),
-  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`user_framework_version_id`) REFERENCES `framework_version` (`id`);
+  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`user_framework_version_id`) REFERENCES `framework_versions` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

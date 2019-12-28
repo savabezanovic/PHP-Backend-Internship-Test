@@ -2,7 +2,7 @@
 
 	<h1>Login Screen</h1>
 
-	<form>
+	<form method="GET" action="dashboard">
 		
 		<span for="email">Email Input Field:</span>
 		<input type="email" name="email" placeholder="name@email.com">

@@ -14,14 +14,43 @@
 
 		}
 
-		public function selectAll($table)
+		public function loginRequest($email, $password)
 
 		{
 
-			$statment = $this->pdo->prepare("SELECT * FROM {$table}");
-			$statment->execute();
+			$statement = $this->pdo->prepare("SELECT * FROM users WHERE users.email = '$email' AND users.password = '$password'");
+			
+			$statement->execute();
 
-			return $statment->fetchAll(PDO::FETCH_OBJ);
+			return $statement->fetchAll(PDO::FETCH_OBJ);
+
+		}
+
+		public function selectUserTypes()
+
+		{
+
+			$statement = $this->pdo->prepare("
+
+				SELECT * FROM fields LEFT JOIN languages ON fields.id = languages.field_id
+
+				LEFT JOIN frameworks ON languages.id = frameworks.language_id 
+
+				LEFT JOIN framework_versions ON frameworks.id = framework_versions.framework_id 
+
+				UNION ALL 
+
+				SELECT * FROM fields RIGHT JOIN languages ON fields.id = languages.field_id
+
+				RIGHT JOIN frameworks ON languages.id = frameworks.language_id 
+
+				RIGHT JOIN framework_versions ON frameworks.id = framework_versions.framework_id
+				
+				");
+
+			$statement->execute();
+
+			return $statement->fetchAll(PDO::FETCH_OBJ);
 
 		}
 

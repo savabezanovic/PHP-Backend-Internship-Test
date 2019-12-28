@@ -24,14 +24,6 @@
         	return $router;
     	}
 
-		// public function define($routes)
-
-		// {
-
-		// 	$this->routes = $routes;
-
-		// }
-
 		public function get($uri, $controller)
 
 		{

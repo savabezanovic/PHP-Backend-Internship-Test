@@ -2,6 +2,6 @@
 
 	<h1>Dashboard Screen</h1>
 
-	<h2>Welcome, {name of the user}!</h2>
+	<h2>Welcome, <?php echo ($user[0]->{"name"}) ?> ! </h2>
 
 <?php require ("partials/footer.php") ?>

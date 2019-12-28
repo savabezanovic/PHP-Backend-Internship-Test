@@ -10,11 +10,16 @@
 		<span for="userType">User Type Select Field:</span>
 		<select name="userType">
 
- 	 		<option value="">Front End</option>
-			<option value="">Back End</option>
-			<option value="">Java Script</option>
-			<option value="">PHP</option>
+		<?php foreach ($userTypes as $userType) : ?>
 
+ 	 			<option name=<?php echo $userType->{"name"} ?>>
+ 	 				
+ 	 				<?php echo $userType->{"name"} ?>
+ 	 					
+ 	 			</option>
+
+ 	 	<?php endforeach; ?>
+ 
 		</select>
 
 		<button type="submit">Search</button>
