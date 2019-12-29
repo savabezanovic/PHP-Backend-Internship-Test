@@ -12,4 +12,6 @@
 
 	$router->get("logout", "controllers/logout.php");
 
+	$router->get("auth", "controllers/auth.php");
+
  ?>

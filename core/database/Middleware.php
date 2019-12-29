@@ -12,6 +12,18 @@
 
 		}
 
+		/* public function routAuthorisation()
+
+		{
+
+			if ($_SESSION["user-key"] == "") {
+				
+				header("Location: login");
+
+			}
+
+		} */
+
 		public 	function homePageCheckLogin()
 
 		{
@@ -30,6 +42,20 @@
 
 		}
 
+		public function routAuth()
+
+		{
+
+			if ($_SESSION["user-key"] == "")
+
+			{
+
+				header("Location: login");
+
+			}
+
+		}
+
 		public function redirect()
 
 		{
@@ -40,7 +66,11 @@
 
 				header("Location: results");
 
-			} else if ($_SESSION["user-key"] == ""){
+			} else if (!$_SESSION["user-key"] == ""){
+
+				header("Location: dashboard");
+
+			} else {
 
 				header("Location: login");
 
@@ -62,7 +92,11 @@
 
 			header("Location: /login");
 
-			} 
+			} else if ($_SESSION["search"] == []){
+
+				header("Location: /");
+
+			}
 
 		}
 
@@ -70,15 +104,15 @@
 
 		{
 
-			if ($databaseEmail == $loginEmail && $databasePassword == $loginPassword) 
+			$status = "refused";
+
+			if ($databaseEmail === $loginEmail && $databasePassword === $loginPassword && strlen($loginEmail) > 0) 
 
 			{
-			
-				return "logedin";
 
-			} else {
+				$status = "logedin";
 
-				return "refused";
+				return $status;
 
 			}
 
