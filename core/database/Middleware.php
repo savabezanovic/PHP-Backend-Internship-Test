@@ -92,7 +92,7 @@
 
 			header("Location: /login");
 
-			} else if ($_SESSION["search"] == []){
+			} else if (count($_SESSION["search"]) === 0){
 
 				header("Location: /");
 
