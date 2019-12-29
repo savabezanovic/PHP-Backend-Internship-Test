@@ -82,21 +82,28 @@
 
 		{
 
-			$_SESSION["search"] = $_GET;
-
 			if ($_SESSION["user-key"] == "")
 
 			{
 
-			$_SESSION["redirected"] = "results";
+				$_SESSION["search"] = $_GET;
 
-			header("Location: /login");
+				$_SESSION["redirected"] = "results";
 
-			} else if (count($_SESSION["search"]) === 0){
+				header("Location: /login");
+
+			} else if (empty($_GET) && empty($_SESSION["search"]))
+
+			{
 
 				header("Location: /");
 
+			} else {
+
+				echo "Welcome to the results screen!";
+
 			}
+
 
 		}
 
