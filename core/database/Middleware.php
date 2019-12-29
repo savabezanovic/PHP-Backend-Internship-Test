@@ -52,17 +52,17 @@
 
 		{
 
+			$_SESSION["search"] = $_GET;
+
 			if ($_SESSION["user-key"] == "")
 
 			{
 
 			$_SESSION["redirected"] = "results";
 
-			$_SESSION["search"] = $_GET;
-
 			header("Location: /login");
 
-			}
+			} 
 
 		}
 

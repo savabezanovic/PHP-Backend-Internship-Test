@@ -26,7 +26,7 @@
 
 		}
 
-		public function selectUserTypes()
+		/* public function selectUserTypes()
 
 		{
 
@@ -52,7 +52,7 @@
 
 			return $statement->fetchAll(PDO::FETCH_OBJ);
 
-		}
+		} */
 
 		public function insert($table, $parameters)
 

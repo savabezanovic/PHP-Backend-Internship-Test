@@ -10,7 +10,10 @@
 		<span for="userType">User Type Select Field:</span>
 		<select name="userType">
 
-		<?php foreach ($userTypes as $userType) : ?>
+			<option name="Front End">Front End</option>
+			<option name="Back End">Back End</option>
+
+<!-- 		<?php foreach ($userTypes as $userType) : ?>
 
  	 			<option name=<?php echo $userType->{"name"} ?>>
  	 				
@@ -18,7 +21,7 @@
  	 					
  	 			</option>
 
- 	 	<?php endforeach; ?>
+ 	 	<?php endforeach; ?> -->
  
 		</select>
 
