@@ -175,7 +175,125 @@
 
 		}
 
-		
+		public function registerValidation()
+
+		{
+
+			$allowedCharacters = "/^[A-Za-z' 0-9]/";
+			//$allowedCharacters = "/^[A-Za-z\\- \'0-9]+$/";
+
+			$allowedCharactersEmail = "/^[A-Za-z'@.0-9]/";
+
+			$numbersInPassword = "/[0-9]/";
+
+			preg_match($numbersInPassword, $_POST["password"], $array);
+
+			$passwordNumbersAmount = count($array) + 1;
+
+			if (!preg_match($allowedCharacters, $_POST["password"]) && !preg_match($allowedCharacters, $_POST["repeatPassword"])) 
+
+			{
+				echo "Forbidden characters in password!";
+				//header("Location: register");
+			}
+
+			else if (!$passwordNumbersAmount >= 3)
+
+			{
+
+				echo "Password has to have more then 3 numbers";
+
+			}
+
+			else if (!preg_match($allowedCharactersEmail, $_POST["email"]))
+
+			{
+
+				echo "Forbidden characters in email";
+				//header("Location: register");
+
+			}
+
+			else if (!preg_match($allowedCharacters, $_POST["name"]))
+
+			{
+
+				echo "Forbidden characters in name";
+				//header("Location: register");
+
+			}
+
+			/*else if ($_POST["password"] !== $_POST["repeatPassword"])
+
+			{
+				echo "Passwords do not match";
+				//header("Location: register");
+
+			} */
+
+			else if ($_POST["password"] === "" || $_POST["repeatPassword"] === "")
+
+			{
+
+				echo "Enter password";
+				//header("Location: register");
+
+			}
+
+			else if ($_POST["name"] === "")
+
+			{
+				echo "Enter name";
+				//header("Location: register");
+
+			}
+
+			else if ($_POST["email"] === "")
+
+			{
+
+				echo "Enter email.";
+				//header("Location: register");
+
+			}
+
+			else if (strlen($_POST["name"]) < 2 || strlen($_POST["name"]) > 30)
+
+			{
+
+				echo "Enter name longer then 2 and shorter then 40 characters";
+				//header("Location: register");
+
+			}
+
+			else if (strlen($_POST["password"]) < 6 || strlen($_POST["password"]) > 15)
+
+			{
+
+				echo "Enter password longer then 6 and shorter then 40 characters";
+				//header("Location: register");
+
+			}
+
+			else if (strlen($_POST["repeatPassword"]) < 6 || strlen($_POST["repeatPassword"]) > 15)
+
+			{
+
+				echo "Enter password longer then 6 and shorter then 40 characters";
+				//header("Location: register");
+
+			}
+
+			else if (strlen($_POST["email"]) < 15 || strlen($_POST["email"]) > 30)
+
+			{
+
+				echo "Enter email longer then 15 and shorter then 30 characters";
+				//header("Location: register");
+
+			}
+
+		}
 
 	}
 

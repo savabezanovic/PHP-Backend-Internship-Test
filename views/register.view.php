@@ -2,16 +2,20 @@
 
 	<h1>Register Screen</h1>
 
-	<form method="POST" action="register">
+	<form method="POST" action="validation">
 		
 		<!-- Same as in index.view.php -->
 		<span for="userType">User Type Select Field:</span>
+
 		<select name="userType">
 
- 	 		<option value="">Front End</option>
-			<option value="">Back End</option>
-			<option value="">Java Script</option>
-			<option value="">PHP</option>
+ 	 		<option value="frontend">Front End</option>
+			<option value="backEnd">Back End</option>
+			<option value="javascript">Java Script</option>
+			<option value="php">PHP</option>
+			<option value="vuejs">Vue.js</option>
+			<option value="laravel">Laravel</option>
+			<option value="anuglarjs">AngularJs</option>
 
 		</select>
 

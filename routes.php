@@ -14,4 +14,8 @@
 
 	$router->get("auth", "controllers/auth.php");
 
+	$router->get("validation", "controllers/validation.php");
+
+	$router->post("validation", "controllers/validation.php");
+
  ?>
