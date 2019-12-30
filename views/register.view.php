@@ -2,7 +2,7 @@
 
 	<h1>Register Screen</h1>
 
-	<form>
+	<form method="POST" action="register">
 		
 		<!-- Same as in index.view.php -->
 		<span for="userType">User Type Select Field:</span>

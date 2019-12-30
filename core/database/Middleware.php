@@ -78,7 +78,7 @@
 
 		}
 
-		public function redirectFromResultsToLogin()
+		public function redirectFromResults()
 
 		{
 

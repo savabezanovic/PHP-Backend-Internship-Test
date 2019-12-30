@@ -47,4 +47,7 @@
 
 	</ul>
 
+	<?php var_dump($userTypes); ?>
+
+
 <?php require ("partials/footer.php"); ?>

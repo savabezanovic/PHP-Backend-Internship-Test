@@ -26,7 +26,7 @@
 
 		}
 
-		/* public function selectUserTypes()
+		public function selectUserTypes()
 
 		{
 
@@ -34,17 +34,17 @@
 
 				SELECT * FROM fields LEFT JOIN languages ON fields.id = languages.field_id
 
-				LEFT JOIN frameworks ON languages.id = frameworks.language_id 
+				-- LEFT JOIN frameworks ON languages.id = frameworks.language_id 
 
-				LEFT JOIN framework_versions ON frameworks.id = framework_versions.framework_id 
+				-- LEFT JOIN framework_versions ON frameworks.id = framework_versions.framework_id 
 
 				UNION ALL 
 
 				SELECT * FROM fields RIGHT JOIN languages ON fields.id = languages.field_id
 
-				RIGHT JOIN frameworks ON languages.id = frameworks.language_id 
+				-- RIGHT JOIN frameworks ON languages.id = frameworks.language_id 
 
-				RIGHT JOIN framework_versions ON frameworks.id = framework_versions.framework_id
+				-- RIGHT JOIN framework_versions ON frameworks.id = framework_versions.framework_id
 				
 				");
 
@@ -52,7 +52,7 @@
 
 			return $statement->fetchAll(PDO::FETCH_OBJ);
 
-		} */
+		} 
 
 		public function insert($table, $parameters)
 
