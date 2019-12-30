@@ -1,5 +1,5 @@
 <?php require ("partials/header.php"); ?>
-
+	
 	<h1>Results Screen</h1>
 
 	<h2>Left Side</h2>
@@ -46,8 +46,5 @@
 		<li>Bezanovic</li>
 
 	</ul>
-
-	<?php var_dump($userTypes); ?>
-
 
 <?php require ("partials/footer.php"); ?>

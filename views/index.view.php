@@ -12,16 +12,6 @@
 
 			<option name="Front End">Front End</option>
 			<option name="Back End">Back End</option>
-
-<!-- 		<?php foreach ($userTypes as $userType) : ?>
-
- 	 			<option name=<?php echo $userType->{"name"} ?>>
- 	 				
- 	 				<?php echo $userType->{"name"} ?>
- 	 					
- 	 			</option>
-
- 	 	<?php endforeach; ?> -->
  
 		</select>
 

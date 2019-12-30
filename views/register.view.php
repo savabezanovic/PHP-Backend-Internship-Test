@@ -7,15 +7,12 @@
 		<!-- Same as in index.view.php -->
 		<span for="userType">User Type Select Field:</span>
 
-		<select name="userType">
+		<select name="user_type_id">
+			<?php foreach($userTypes as $userType): ?>
 
- 	 		<option value="frontend">Front End</option>
-			<option value="backend">Back End</option>
-			<option value="javascript">Java Script</option>
-			<option value="php">PHP</option>
-			<option value="vuejs">Vue.js</option>
-			<option value="laravel">Laravel</option>
-			<option value="anuglarjs">AngularJs</option>
+				<option value=<?php echo $userType->{"id"} ?>><?php echo $userType->{"type_name"} ?></option>
+				
+			<?php endforeach; ?>
 
 		</select>
 

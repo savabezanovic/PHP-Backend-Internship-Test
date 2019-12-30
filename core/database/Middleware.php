@@ -12,18 +12,6 @@
 
 		}
 
-		/* public function routAuthorisation()
-
-		{
-
-			if ($_SESSION["user-key"] == "") {
-				
-				header("Location: login");
-
-			}
-
-		} */
-
 		public 	function homePageCheckLogin()
 
 		{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 28, 2019 at 03:16 PM
+-- Generation Time: Dec 30, 2019 at 09:13 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -70,7 +70,7 @@ INSERT INTO `frameworks` (`id`, `name`, `language_id`) VALUES
 
 CREATE TABLE `framework_versions` (
   `id` int(11) NOT NULL,
-  `version_name` varchar(40) NOT NULL,
+  `name` varchar(40) NOT NULL,
   `framework_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -78,7 +78,7 @@ CREATE TABLE `framework_versions` (
 -- Dumping data for table `framework_versions`
 --
 
-INSERT INTO `framework_versions` (`id`, `version_name`, `framework_id`) VALUES
+INSERT INTO `framework_versions` (`id`, `name`, `framework_id`) VALUES
 (1, 'AngularJs', 3);
 
 -- --------------------------------------------------------
@@ -109,23 +109,45 @@ INSERT INTO `languages` (`id`, `name`, `field_id`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `user_field_id` int(11) NOT NULL,
-  `user_language_id` int(11) NOT NULL,
-  `user_framework_id` int(11) NOT NULL,
-  `user_framework_version_id` int(11) DEFAULT NULL
+  `name` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `user_type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_field_id`, `user_language_id`, `user_framework_id`, `user_framework_version_id`) VALUES
-(1, 'Sava', 'savabezanovic@hotmail.com', 'blatruc', 2, 2, 2, NULL),
-(2, 'Strahinja', 'skansi97@gmail.com', 'blatruc', 1, 1, 1, NULL),
-(3, 'Bezanovic', 'savabezanovicsae@gmail.com', 'blatruc', 1, 1, 3, 1);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type_id`) VALUES
+(1, 'Strahinja Kurtisi', 'strajla@hotmail.com', 'BlaTruc974', 4),
+(3, 'Sava Bezanovic', 'savabezanovic@hotmail.com', 'blatruc974', 6),
+(4, 'Pera Peric', 'pera@peric.com', 'perica123', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_types`
+--
+
+CREATE TABLE `user_types` (
+  `id` int(11) NOT NULL,
+  `type_name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_types`
+--
+
+INSERT INTO `user_types` (`id`, `type_name`) VALUES
+(7, 'Angular'),
+(8, 'Angular.JS'),
+(2, 'Back End'),
+(1, 'Front End'),
+(4, 'Java Script'),
+(6, 'Laravel'),
+(3, 'PHP'),
+(5, 'Vue.JS');
 
 --
 -- Indexes for dumped tables
@@ -151,7 +173,7 @@ ALTER TABLE `frameworks`
 --
 ALTER TABLE `framework_versions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `version_name` (`version_name`),
+  ADD UNIQUE KEY `version_name` (`name`),
   ADD KEY `framework_name` (`framework_id`);
 
 --
@@ -170,10 +192,14 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `user_field` (`user_field_id`),
-  ADD KEY `user_language` (`user_language_id`),
-  ADD KEY `user_framework` (`user_framework_id`),
-  ADD KEY `user_framework_version_id` (`user_framework_version_id`);
+  ADD KEY `user_type_id` (`user_type_id`);
+
+--
+-- Indexes for table `user_types`
+--
+ALTER TABLE `user_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `type_name` (`type_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -207,7 +233,13 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user_types`
+--
+ALTER TABLE `user_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -235,10 +267,7 @@ ALTER TABLE `languages`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_field_id`) REFERENCES `fields` (`id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`user_language_id`) REFERENCES `languages` (`id`),
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`user_framework_id`) REFERENCES `frameworks` (`id`),
-  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`user_framework_version_id`) REFERENCES `framework_versions` (`id`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type_id`) REFERENCES `user_types` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
