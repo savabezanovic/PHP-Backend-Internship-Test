@@ -193,14 +193,17 @@
 			if (!preg_match($allowedCharacters, $_POST["password"]) && !preg_match($allowedCharacters, $_POST["repeatPassword"])) 
 
 			{
+
+				header("Location: register");
 				echo "Forbidden characters in password!";
-				//header("Location: register");
+				
 			}
 
 			else if (!$passwordNumbersAmount >= 3)
 
 			{
 
+				header("Location: register");
 				echo "Password has to have more then 3 numbers";
 
 			}
@@ -209,8 +212,8 @@
 
 			{
 
+				header("Location: register");
 				echo "Forbidden characters in email";
-				//header("Location: register");
 
 			}
 
@@ -218,42 +221,17 @@
 
 			{
 
+				header("Location: register");
 				echo "Forbidden characters in name";
-				//header("Location: register");
 
 			}
 
-			/*else if ($_POST["password"] !== $_POST["repeatPassword"])
+			else if ($_POST["password"] !== $_POST["repeatPassword"])
 
 			{
+
+				header("Location: register");
 				echo "Passwords do not match";
-				//header("Location: register");
-
-			} */
-
-			else if ($_POST["password"] === "" || $_POST["repeatPassword"] === "")
-
-			{
-
-				echo "Enter password";
-				//header("Location: register");
-
-			}
-
-			else if ($_POST["name"] === "")
-
-			{
-				echo "Enter name";
-				//header("Location: register");
-
-			}
-
-			else if ($_POST["email"] === "")
-
-			{
-
-				echo "Enter email.";
-				//header("Location: register");
 
 			}
 
@@ -261,8 +239,8 @@
 
 			{
 
+				header("Location: register");
 				echo "Enter name longer then 2 and shorter then 40 characters";
-				//header("Location: register");
 
 			}
 
@@ -270,8 +248,8 @@
 
 			{
 
+				header("Location: register");
 				echo "Enter password longer then 6 and shorter then 40 characters";
-				//header("Location: register");
 
 			}
 
@@ -279,8 +257,8 @@
 
 			{
 
+				header("Location: register");
 				echo "Enter password longer then 6 and shorter then 40 characters";
-				//header("Location: register");
 
 			}
 
@@ -288,8 +266,8 @@
 
 			{
 
+				header("Location: register");
 				echo "Enter email longer then 15 and shorter then 30 characters";
-				//header("Location: register");
 
 			}
 

@@ -10,7 +10,7 @@
 		<select name="userType">
 
  	 		<option value="frontend">Front End</option>
-			<option value="backEnd">Back End</option>
+			<option value="backend">Back End</option>
 			<option value="javascript">Java Script</option>
 			<option value="php">PHP</option>
 			<option value="vuejs">Vue.js</option>
