@@ -1,7 +1,7 @@
 <?php 
 
 	$middleware= $app["middleware"]->homePageCheckLogin();
-	/* $userTypes = $app["database"]->selectUserTypes(); */
+	$userTypes = $app["database"]->getAllUserTypes();
 
 	require "views/index.view.php";
 

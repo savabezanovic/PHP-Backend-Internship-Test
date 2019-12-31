@@ -68,7 +68,7 @@
 
 				$statement = $this->pdo->prepare("
 
-						SELECT * FROM user_types
+						SELECT * FROM user_types ORDER BY user_types.id ASC
 					
 					");
 
@@ -83,6 +83,62 @@
 			}
 
 		}
+
+		public function findUser($user_name, $user_type_id)
+
+		{	
+
+			try{
+
+				$statement = $this->pdo->prepare("
+
+				SELECT users.name, user_types.type_name FROM users LEFT JOIN user_types ON users.user_type_id = user_types.id WHERE users.name = '$user_name' AND users.user_type_id = '$user_type_id' ORDER BY users.id
+
+				");
+
+				$statement->execute();
+
+				return $statement->fetchAll(PDO::FETCH_OBJ);
+
+
+			} catch (Exception $e) {
+
+				die("Something went wrong in Query Builder" . $e);
+
+			}
+
+		}
+
+		public function usersTypeNumbers()
+
+		{
+	
+			try {
+
+				$statement = $this->pdo->prepare("
+
+						SELECT users.name, user_types.type_name 
+
+						FROM user_types 
+
+						INNER JOIN users ON users.user_type_id = user_types.id 
+
+						WHERE users.user_type_id = user_types.id
+					
+					");
+
+				$statement->execute();
+
+				return $statement->fetchAll(PDO::FETCH_OBJ);
+
+			} catch (Exception $e) {
+
+				die("Something went wrong in Query Builder!" . $e);
+
+			}
+
+		}
+
 
 	}
 

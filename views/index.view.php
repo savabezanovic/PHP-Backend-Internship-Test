@@ -5,12 +5,18 @@
 	<form method="GET" action="/results">
 		
 		<span for="name">Search Text Input:</span>
-		<input type="text" name="name"></input>
+		<input type="text" name="name" required></input>
 
-		<span for="userType">User Type Select Field:</span>
-		<select name="userType">
+		<span for="user_type_id">User Type Select Field:</span>
+		<select name="user_type_id">
+		
+		<?php foreach($userTypes as $userType): ?>
 
-			<option name="Front End">Front End</option>
+			<option value=<?php echo $userType->{"id"} ?>><?php echo $userType->{"type_name"} ?></option>
+
+		<?php endforeach; ?>	
+
+			
 			<option name="Back End">Back End</option>
  
 		</select>

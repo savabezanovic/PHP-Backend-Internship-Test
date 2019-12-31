@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2019 at 09:13 PM
+-- Generation Time: Dec 31, 2019 at 04:06 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -121,8 +121,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type_id`) VALUES
 (1, 'Strahinja Kurtisi', 'strajla@hotmail.com', 'BlaTruc974', 4),
+(2, 'Halid Beslic', 'prvi@poljubac.com', 'prvipoljubac123', 4),
 (3, 'Sava Bezanovic', 'savabezanovic@hotmail.com', 'blatruc974', 6),
-(4, 'Pera Peric', 'pera@peric.com', 'perica123', 8);
+(4, 'Pera Peric', 'pera@peric.com', 'perica123', 8),
+(5, 'Djura Djuric', 'djura@djuric.com', 'blatruc123', 6);
 
 -- --------------------------------------------------------
 
@@ -233,7 +235,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_types`
